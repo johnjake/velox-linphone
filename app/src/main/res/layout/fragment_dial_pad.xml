@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/numpad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:background="@color/white_alpha_50"
+        app:flexWrap="wrap"
+        app:justifyContent="space_around"
+        app:alignItems="center"
+        app:alignContent="space_around">
+        <ImageView
+            style="@style/numpad_digit"
+            android:src="@drawable/ic_number_one"
+            android:contentDescription="@string/description_numpad_1"
+            />
+
+        <ImageView
+            style="@style/numpad_digit"
+            android:contentDescription="@string/description_numpad_2"
+            android:src="@drawable/ic_number_two"
+            />
+
+        <ImageView
+            style="@style/numpad_digit"
+            android:contentDescription="@string/description_numpad_3"
+            android:src="@drawable/ic_number_three"
+            />
+
+        <ImageView
+            style="@style/numpad_digit"
+            app:layout_wrapBefore="true"
+            android:src="@drawable/ic_number_four"
+            android:contentDescription="@string/description_numpad_4"
+             />
+
+        <ImageView
+            style="@style/numpad_digit"
+            android:src="@drawable/ic_number_five"
+            android:contentDescription="@string/description_numpad_5"
+             />
+
+        <ImageView
+            style="@style/numpad_digit"
+            android:src="@drawable/ic_number_six"
+            android:contentDescription="@string/description_numpad_6"
+           />
+
+        <ImageView
+            style="@style/numpad_digit"
+            app:layout_wrapBefore="true"
+            android:src="@drawable/ic_number_seven"
+            android:contentDescription="@string/description_numpad_7"
+             />
+
+        <ImageView
+            style="@style/numpad_digit"
+            android:src="@drawable/ic_number_eight"
+            android:contentDescription="@string/description_numpad_8"
+            />
+
+        <ImageView
+            style="@style/numpad_digit"
+            android:src="@drawable/ic_number_nine"
+            android:contentDescription="@string/description_numpad_9"
+            />
+
+        <ImageView
+            style="@style/numpad_digit"
+            app:layout_wrapBefore="true"
+            android:src="@drawable/ic_star_digit"
+            android:contentDescription="@string/description_numpad_star"
+            />
+
+        <ImageView
+            style="@style/numpad_digit"
+            android:src="@drawable/ic_number_zero"
+            android:contentDescription="@string/description_numpad_0"
+         />
+
+        <ImageView
+            style="@style/numpad_digit"
+            android:src="@drawable/ic_sharp_digit"
+            android:contentDescription="@string/description_numpad_0"
+          />
+    </com.google.android.flexbox.FlexboxLayout>
+</layout>

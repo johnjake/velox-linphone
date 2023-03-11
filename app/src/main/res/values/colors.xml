@@ -25,4 +25,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg_color_bottom_nav">#F2222229</color>
+    <color name="green_color">#96c11f</color>
+    <color name="light_grey_color">#c4c4c4</color>
+    <color name="transparent_color">#00000000</color>
 </resources>
