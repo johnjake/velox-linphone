@@ -36,6 +36,13 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="460dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/transportGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="490dp" />
+
     <TextView
         android:id="@+id/welcomeBackTitle"
         style="@style/ThemeTitleStyle"
@@ -135,6 +142,50 @@
         app:layout_goneMarginBottom="28dp"
         />
 
+    <RadioGroup
+        android:layout_marginTop="@dimen/resources_16dp"
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/transportGuideline"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        >
+
+        <TextView
+            style="@style/themeRadioTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/transport"
+            android:textAllCaps="true" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            style="@style/themeRadioTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/resources_48dp"
+            android:layout_margin="5dp"
+            android:text="@string/transport_udp" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/resources_48dp"
+            android:layout_margin="5dp"
+            style="@style/themeRadioTitle"
+            android:text="@string/transport_tcp" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/resources_48dp"
+            android:layout_margin="5dp"
+            style="@style/themeRadioTitle"
+            android:text="@string/transport_tls" />
+
+    </RadioGroup>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textError"
         style="@style/themeSubTitle"
@@ -157,6 +208,6 @@
         android:contentDescription="@string/click_to_login"
         android:background="@drawable/next_button"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintTop_toTopOf="@+id/buttomGuideline" />
+        app:layout_constraintTop_toTopOf="@+id/transportGuideline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

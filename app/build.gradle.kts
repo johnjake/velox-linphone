@@ -115,6 +115,9 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.45")
     kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")
 
+    /** lin phone **/
+    implementation ("org.linphone:linphone-sdk-android:5.2.30")
+
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
