@@ -5,7 +5,8 @@
     android:id="@+id/signInContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/black_gradient">
+    android:background="@drawable/black_gradient"
+    tools:context=".features.login.LoginFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftGuideline"
@@ -151,6 +152,8 @@
         style="@style/PrimaryColoredButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:enabled="true"
+        android:clickable="true"
         android:contentDescription="@string/click_to_login"
         android:background="@drawable/next_button"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"

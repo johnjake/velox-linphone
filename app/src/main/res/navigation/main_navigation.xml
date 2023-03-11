@@ -6,9 +6,18 @@
     app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.velox.org.LoginFragment"
+        android:name="com.velox.org.features.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_to_dialerFragment"
+            app:destination="@id/dialerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/dialerFragment"
+        android:name="com.velox.org.features.dialer.DialerFragment"
+        android:label="DialerFragment"
+        tools:layout="@layout/fragment_dialer"
+        />
 
 </navigation>

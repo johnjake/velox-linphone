@@ -20,4 +20,22 @@
     <string name="title">Contact</string>
     <string name="my_inbox">Inbox</string>
     <string name="profile">Profile</string>
+    <string name="description_numpad_1">number pad 1</string>
+    <string name="description_numpad_2">number pad 2</string>
+    <string name="description_numpad_3">number pad 3</string>
+    <string name="description_numpad_4">number pad 4</string>
+    <string name="description_numpad_5">number pad 5</string>
+    <string name="description_numpad_6">number pad 6</string>
+    <string name="description_numpad_7">number pad 7</string>
+    <string name="description_numpad_8">number pad 8</string>
+    <string name="description_numpad_9">number pad 9</string>
+    <string name="description_numpad_0">number pad 0</string>
+    <string name="description_numpad_star">number star digit</string>
+    <string name="content_start_call">start call</string>
+    <string name="content_description_transfer_call">transfer call</string>
+    <string name="content_description_add_call">add call</string>
+    <string name="content_description_add_contact">add to contact</string>
+    <string name="dialer_address_bar_hint">address bar hint</string>
+    <string name="content_description_dialer_erase">erase dialer number</string>
+    <string name="content_description_video_conf">video conference call</string>
 </resources>

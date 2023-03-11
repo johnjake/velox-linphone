@@ -4,6 +4,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
 }
 
@@ -60,8 +61,10 @@ android {
 
     buildFeatures {
         compose = true
+        dataBinding = true
         viewBinding = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.2"
     }
@@ -85,6 +88,12 @@ dependencies {
     val composeBom = platform("androidx.compose:compose-bom:2023.01.00")
     implementation(composeBom)
     androidTestImplementation(composeBom)
+
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
+
+    /** nav component **/
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
 
     /*** room ***/
     implementation("androidx.room:room-runtime:2.5.0")
