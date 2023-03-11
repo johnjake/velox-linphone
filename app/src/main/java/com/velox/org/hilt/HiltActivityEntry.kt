@@ -1,0 +1,7 @@
+package com.velox.org.hilt
+
+import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+open class HiltActivityEntry : AppCompatActivity()

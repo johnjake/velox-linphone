@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Velox LinPhone</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+
+    <string name="incorrect_password">Incorrect Password\n</string>
+    <string name="s_email_address">Username</string>
+    <string name="s_password">Password</string>
+    <string name="yes">Yes\n</string>
+    <string name="password_time">Password</string>
+    <string name="welcome_back">LinPhone Welcome</string>
+    <string name="click_to_login">welcome to login</string>
+    <string name="sip_address">sip address</string>
+    <string name="home">Home</string>
+    <string name="title">Contact</string>
+    <string name="my_inbox">Inbox</string>
+    <string name="profile">Profile</string>
+</resources>
