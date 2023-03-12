@@ -1,26 +1,28 @@
 package com.velox.org.features.login
 
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.velox.org.bases.BaseFragment
 import com.velox.org.databinding.FragmentLoginBinding
 import com.velox.org.features.main.MainActivity
+import com.velox.org.features.utils.castToJson
+import com.velox.org.features.utils.gone
 import com.velox.org.features.utils.navigate
+import com.velox.org.features.utils.visible
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import org.linphone.core.Account
 import org.linphone.core.Core
 import org.linphone.core.CoreListenerStub
 import org.linphone.core.RegistrationState
 import org.linphone.core.TransportType
+import timber.log.Timber
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
-    val mutableLoader: MutableSharedFlow<Boolean> = MutableSharedFlow()
-    val counterState: SharedFlow<Boolean> = mutableLoader
+    private val mutableLoader: MutableSharedFlow<Boolean> = MutableSharedFlow()
+    private val counterState: SharedFlow<Boolean> = mutableLoader
 
     private val viewModel: LoginViewModel by viewModels()
     private val core: Core by lazy { viewModel.createCore(null, null) }
@@ -29,20 +31,65 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         val act = requireActivity() as MainActivity
         act.hideNavigation()
         loaderCollect()
-        login()
+        authenticate()
+        onKeyListener()
+    }
+
+    private fun onKeyListener() {
+        binding.apply {
+            email.setOnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    textError.gone()
+                    userLoginButton.visible()
+                }
+            }
+            password.setOnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    textError.gone()
+                    userLoginButton.visible()
+                }
+            }
+            sipAddress.setOnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    textError.gone()
+                    userLoginButton.visible()
+                }
+            }
+        }
     }
     private fun loaderCollect() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            mutableLoader.collectLatest { state ->
-                when(state) {
-                    true -> binding.progressBar.visibility = View.VISIBLE
-                    false -> binding.progressBar.visibility = View.GONE
+            viewModel.accountState.collectLatest { state ->
+                when (state) {
+                    is AuthState.ShowLoader -> handleShow()
+                    is AuthState.HideLoader -> handleHide()
+                    is AuthState.OnSuccess -> handleSuccess(state.account)
+                    is AuthState.OnFailure -> handleFailed(state.error)
                 }
             }
         }
     }
 
-    private fun login() {
+    private fun handleFailed(error: String) {
+        invalidAuth()
+    }
+
+    private fun handleShow() {
+        binding.progressBar.visible()
+    }
+
+    private fun handleHide() {
+        binding.progressBar.gone()
+    }
+
+    private fun handleSuccess(account: Account) {
+        binding.progressBar.gone()
+        binding.textError.gone()
+        Timber.e("@@@@@@@@@@@@@@@ name: ${account.castToJson()}")
+        navigate(LoginFragmentDirections.actionToDialerFragment())
+    }
+
+    private fun authenticate() {
         var transportType: TransportType? = null
         binding.apply {
             radioGroup.setOnCheckedChangeListener { _, checkedId ->
@@ -52,13 +99,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     else -> TransportType.Tls
                 }
             }
-            /*userLoginButton.setOnClickListener {
-                navigate(LoginFragmentDirections.actionToDialerFragment())
-            }*/
             userLoginButton.setOnClickListener {
                 val userName = email.text.toString()
                 val passWord = password.text.toString()
-                val domain = "sip.linphone.org"
+                val domain = sipAddress.text.toString()
                 val authDetails = viewModel.authInfo(
                     username = userName,
                     userId = null,
@@ -89,29 +133,51 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         override fun onAccountRegistrationStateChanged(core: Core, account: Account, state: RegistrationState?, message: String) {
             when (state) {
                 RegistrationState.Progress -> {
-                    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                        mutableLoader.emit(true)
-                    }
+                    emitShowLoader()
                 }
                 RegistrationState.Failed -> {
                     core.clearAllAuthInfo()
                     core.clearAccounts()
-                    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                        mutableLoader.emit(false)
-                    }
+                    emitFailure(message)
                 }
                 RegistrationState.Ok -> {
-                    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                        mutableLoader.emit(false)
-                    }
-                    navigate(LoginFragmentDirections.actionToDialerFragment())
+                    emitSuccess(account)
                 }
                 else -> {
-                    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                        mutableLoader.emit(false)
-                    }
+                    emitHideLoader()
                 }
             }
+        }
+    }
+    private fun invalidAuth() {
+        binding.apply {
+            textError.visible()
+            userLoginButton.gone()
+            passwordTimeTitle.visible()
+        }
+    }
+
+    private fun emitFailure(err: String) {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.emitFailure(err)
+        }
+    }
+
+    private fun emitShowLoader() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.emitShowLoader()
+        }
+    }
+
+    private fun emitHideLoader() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.emitHideLoader()
+        }
+    }
+
+    private fun emitSuccess(account: Account) {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.emitSuccess(account)
         }
     }
 }

@@ -4,32 +4,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.velox.domain.account.AccountInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.linphone.core.Account
 import org.linphone.core.AccountParams
 import org.linphone.core.AuthInfo
 import org.linphone.core.Core
-import org.linphone.core.CoreListenerStub
 import org.linphone.core.LogCollectionState
-import org.linphone.core.RegistrationState
 import org.linphone.core.TransportType
 import javax.inject.Inject
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val account: AccountInfo) : ViewModel() {
 
-    /** call back account listener **/
-
-    private val mutableAuth: MutableSharedFlow<LoginState> = MutableSharedFlow(replay = 1)
-    val stateFlow: SharedFlow<LoginState> = mutableAuth
-
+    private val mutableAccount: MutableSharedFlow<AuthState> = MutableSharedFlow()
+    val accountState: SharedFlow<AuthState> = mutableAccount
     fun createCore(configPath: String?, factoryConfig: String?): Core {
         return account.createCore(configPath = configPath, factoryConfig = factoryConfig)
     }
@@ -88,40 +78,27 @@ class LoginViewModel @Inject constructor(private val account: AccountInfo) : Vie
         )
     }
 
-    suspend fun coreListener(): Boolean = suspendCoroutine { continuation ->
-        object : CoreListenerStub() {
-            override fun onAccountRegistrationStateChanged(
-                core: Core,
-                account: Account,
-                state: RegistrationState?,
-                message: String,
-            ) {
-                when (state) {
-                    RegistrationState.Progress -> {
-                        viewModelScope.launch {
-                            withContext(Dispatchers.IO) {
-                                mutableAuth.emit(LoginState.ShowLoader)
-                            }
-                        }
-                    }
-                    RegistrationState.Ok -> {
-                        viewModelScope.launch {
-                            withContext(Dispatchers.IO) {
-                                mutableAuth.emit(LoginState.HideLoader)
-                            }
-                        }
-                        continuation.resume(true)
-                    }
-                    else -> {
-                        viewModelScope.launch {
-                            withContext(Dispatchers.IO) {
-                                mutableAuth.emit(LoginState.HideLoader)
-                            }
-                        }
-                        continuation.resumeWithException(Throwable(message))
-                    }
-                }
-            }
+    fun emitSuccess(account: Account) {
+        viewModelScope.launch {
+            mutableAccount.emit(AuthState.OnSuccess(account))
+        }
+    }
+
+    fun emitFailure(error: String) {
+        viewModelScope.launch {
+            mutableAccount.emit(AuthState.OnFailure(error))
+        }
+    }
+
+    fun emitShowLoader() {
+        viewModelScope.launch {
+            mutableAccount.emit(AuthState.ShowLoader)
+        }
+    }
+
+    fun emitHideLoader() {
+        viewModelScope.launch {
+            mutableAccount.emit(AuthState.HideLoader)
         }
     }
 }
