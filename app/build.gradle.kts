@@ -76,7 +76,7 @@ android {
 }
 
 dependencies {
-
+    implementation(project(mapOf("path" to ":domain")))
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation("androidx.activity:activity-compose:1.6.1")
@@ -91,6 +91,14 @@ dependencies {
 
     implementation("com.google.android.flexbox:flexbox:3.0.0")
 
+    val lifeCycle = "2.4.0"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycle")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycle")
+
+    /*** Kotlin coroutines dependencies ***/
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
     /** nav component **/
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
@@ -102,6 +110,8 @@ dependencies {
     /*** room kotlin extension and coroutines support ***/
     implementation("androidx.room:room-ktx:2.5.0")
 
+    /** audio focus **/
+    implementation("androidx.media:media:1.6.0")
     /**
      * Timber**/
     implementation("com.jakewharton.timber:timber:5.0.1")
@@ -116,7 +126,7 @@ dependencies {
     kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")
 
     /** lin phone **/
-    implementation ("org.linphone:linphone-sdk-android:5.2.30")
+    implementation("org.linphone:linphone-sdk-android:5.2.30")
 
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")

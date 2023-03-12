@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="490dp" />
+        app:layout_constraintGuide_begin="500dp" />
 
     <TextView
         android:id="@+id/welcomeBackTitle"
@@ -85,7 +85,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/email"
         style="@style/ThemeEditText"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
@@ -103,7 +103,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/password"
         style="@style/ThemeEditText"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
@@ -124,7 +124,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/sip_address"
         style="@style/ThemeEditText"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
@@ -133,7 +133,7 @@
         android:paddingStart="8dp"
         android:background="@drawable/edit_text_background"
         android:drawableEnd="@drawable/ic_sip"
-        android:hint="@string/sip_address"
+        android:text="@string/default_sip"
         android:textColorHint="@color/white"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/buttomGuideline"
@@ -155,15 +155,17 @@
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         >
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             style="@style/themeRadioTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:text="@string/transport"
-            android:textAllCaps="true" />
+            android:textAllCaps="true"
+            android:layout_marginTop="@dimen/resources_9dp"
+            />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radioUdp"
             style="@style/themeRadioTitle"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/resources_48dp"
@@ -171,6 +173,7 @@
             android:text="@string/transport_udp" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radioTcp"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/resources_48dp"
             android:layout_margin="5dp"
@@ -178,6 +181,7 @@
             android:text="@string/transport_tcp" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radiotls"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/resources_48dp"
             android:layout_margin="5dp"
@@ -195,8 +199,8 @@
         android:text="@string/incorrect_password"
         android:textSize="12sp"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintStart_toStartOf="@+id/radio_group"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/userLoginButton"
@@ -209,5 +213,18 @@
         android:background="@drawable/next_button"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintTop_toTopOf="@+id/transportGuideline" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="@dimen/resources_52dp"
+        android:layout_height="@dimen/resources_52dp"
+        android:indeterminate="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/resources_275dp"
+        android:layout_marginEnd="@dimen/resources_36dp"
+        android:visibility="gone"
+        style="@style/Widget.Material3.CircularProgressIndicator" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,4 +42,7 @@
     <string name="transport_udp">UDP</string>
     <string name="transport_tcp">TCP</string>
     <string name="transport_tls">TLS</string>
+    <string name="default_sip">sip.linphone.org</string>
+    <string name="invalid_credential">Invalid username or password</string>
+    <string name="confirm">OK</string>
 </resources>
