@@ -19,6 +19,14 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="themeRadioTitle">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
+        <item name="android:shadowRadius">2.0</item>
+    </style>
+
     <style name="ThemeSubtitleTitleStyle">
         <item name="android:textAppearance">@style/themeSubTitle</item>
         <item name="android:includeFontPadding">false</item>
@@ -83,5 +91,26 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="layout_maxWidth">50dp</item>
         <item name="layout_maxHeight">50dp</item>
+    </style>
+
+    <style name="header_font" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="SecondaryButtonBlackStyle">
+        <item name="android:background">@drawable/bg_rounded_button</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="textAllCaps">false</item>
+        <item name="fontFamily">@font/notosans_semibold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconTint">@color/white</item>
+        <item name="iconPadding">0dp</item>
+        <item name="iconGravity">textStart</item>
     </style>
 </resources>

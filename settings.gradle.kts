@@ -1,3 +1,3 @@
 rootProject.name = "Velox LinPhone"
-include(":app")
+include(":app", ":data", "domain")
 
