@@ -19,5 +19,23 @@
         android:label="DialerFragment"
         tools:layout="@layout/fragment_dialer"
         />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.velox.org.features.history.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history"
+        />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.velox.org.features.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"
+        />
+    <fragment
+        android:id="@+id/inboxFragment"
+        android:name="com.velox.org.features.inbox.InboxFragment"
+        android:label="InboxFragment"
+        tools:layout="@layout/fragment_inbox"
+        />
 
 </navigation>
