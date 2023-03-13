@@ -1,4 +1,4 @@
-# Velox LinPhone   ![alt text](https://github.com/johnjake/car-trackers/blob/master/ic_car_top.png)
+# Velox LinPhone   ![alt text](https://github.com/johnjake/velox-linphone/blob/main/ic_velox.png)
 
 Test App using LinPhone Android SDK. 
 
