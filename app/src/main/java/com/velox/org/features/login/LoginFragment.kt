@@ -5,7 +5,6 @@ import androidx.lifecycle.lifecycleScope
 import com.velox.org.bases.BaseFragment
 import com.velox.org.databinding.FragmentLoginBinding
 import com.velox.org.features.main.MainActivity
-import com.velox.org.features.utils.castToJson
 import com.velox.org.features.utils.gone
 import com.velox.org.features.utils.navigate
 import com.velox.org.features.utils.visible
@@ -17,7 +16,6 @@ import org.linphone.core.Core
 import org.linphone.core.CoreListenerStub
 import org.linphone.core.RegistrationState
 import org.linphone.core.TransportType
-import timber.log.Timber
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
@@ -85,8 +83,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private fun handleSuccess(account: Account) {
         binding.progressBar.gone()
         binding.textError.gone()
-        Timber.e("@@@@@@@@@@@@@@@ name: ${account.castToJson()}")
-        navigate(LoginFragmentDirections.actionToDialerFragment())
+        navigateToMain()
     }
 
     private fun authenticate() {
@@ -99,33 +96,45 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     else -> TransportType.Tls
                 }
             }
-            userLoginButton.setOnClickListener {
-                val userName = email.text.toString()
-                val passWord = password.text.toString()
-                val domain = sipAddress.text.toString()
-                val authDetails = viewModel.authInfo(
-                    username = userName,
-                    userId = null,
-                    password = passWord,
-                    ha1 = null,
-                    realm = null,
-                    domain = domain,
-                    algorithm = null,
-                )
-                val param = viewModel.accountParams(
-                    username = userName,
-                    domain = domain,
-                    core = core,
-                    transportType = transportType ?: TransportType.Tls,
-                )
-                val initCore = viewModel.initializedCore(
-                    core = core,
-                    authInfo = authDetails,
-                    params = param,
-                )
-                initCore.addListener(coreListener)
-                initCore.start()
-            }
+        }
+
+        binding.userLoginButton.setOnClickListener {
+            // onLogin(transportType)
+            navigateToMain()
+        }
+    }
+
+    private fun navigateToMain() {
+        navigate(LoginFragmentDirections.actionToDialerFragment())
+    }
+
+    private fun onLogin(transportType: TransportType?) {
+        binding.apply {
+            val userName = email.text.toString()
+            val passWord = password.text.toString()
+            val domain = sipAddress.text.toString()
+            val authDetails = viewModel.authInfo(
+                username = userName,
+                userId = null,
+                password = passWord,
+                ha1 = null,
+                realm = null,
+                domain = domain,
+                algorithm = null,
+            )
+            val param = viewModel.accountParams(
+                username = userName,
+                domain = domain,
+                core = core,
+                transportType = transportType ?: TransportType.Tls,
+            )
+            val initCore = viewModel.initializedCore(
+                core = core,
+                authInfo = authDetails,
+                params = param,
+            )
+            initCore.addListener(coreListener)
+            initCore.start()
         }
     }
 
