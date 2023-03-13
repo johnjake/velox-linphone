@@ -96,8 +96,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         }
 
         binding.userLoginButton.setOnClickListener {
-            // onLogin(transportType)
-            navigateToMain()
+            onLogin(transportType)
         }
     }
 
