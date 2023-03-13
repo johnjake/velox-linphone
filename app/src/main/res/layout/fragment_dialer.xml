@@ -14,11 +14,110 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="65dp" />
-        <include
-            layout="@layout/fragment_dial_pad"
-            android:layout_marginTop="@dimen/resources_65dp"
-            app:layout_constraintTop_toBottomOf="@id/middleGuideline"
+
+    <RelativeLayout
+        android:id="@+id/address_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/resources_60dp"
+        android:layout_alignParentTop="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/middleGuideline"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/padErase"
+            android:contentDescription="@string/content_description_dialer_erase"
+            android:layout_width="@dimen/resources_100dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/resources_10dp"
+            android:paddingRight="@dimen/resources_10dp"
+            android:clickable="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:focusableInTouchMode="true"
+            android:src="@drawable/ic_back_space_unc" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sip_uri_input"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/padErase"
+            android:background="@color/transparent_color"
+            android:backgroundTint="@color/normal_text_color"
+            android:ellipsize="start"
+            android:hint="@string/dialer_address_bar_hint"
+            android:inputType="textEmailAddress|textUri|textNoSuggestions"
+            android:paddingStart="@dimen/resources_20dp"
+            android:paddingEnd="@dimen/resources_5dp"
+            android:textColorHint="@color/light_grey_color" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/resources_60dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/content_description_video_conf"
+            android:padding="@dimen/resources_5dp"
+            android:src="@drawable/ic_video_conf" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/content_description_add_contact"
+            android:padding="15dp"
+            android:src="@drawable/ic_add_contact" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/resources_56dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_caller"
+            android:visibility="gone"
+            android:contentDescription="@string/content_start_call"
+            android:src="@drawable/ic_add_caller"
+            android:padding="12dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/resources_56dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_end_caller"
+            android:contentDescription="@string/content_description_add_call"
+            android:padding="12dp"
+            android:src="@drawable/ic_end_call" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/resources_56dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_caller"
+            android:contentDescription="@string/content_description_transfer_call"
+            android:padding="12dp"
+            android:src="@drawable/ic_start_call" />
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/included_pad"
+        layout="@layout/layout_dial_pad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/resources_65dp"
+        android:layout_marginBottom="@dimen/resources_65dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/middleGuideline" />
 </androidx.constraintlayout.widget.ConstraintLayout>

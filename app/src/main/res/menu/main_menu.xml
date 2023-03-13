@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_home_menu"/>
 
     <item
-        android:id="@+id/car_stack"
+        android:id="@+id/history_stack"
         android:title="@string/title"
         android:icon="@drawable/ic_contain_main"/>
 

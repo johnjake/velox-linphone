@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Velox LinPhone</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Velox Network</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -8,12 +8,12 @@
     <string name="previous">Previous</string>
 
 
-    <string name="incorrect_password">Incorrect Password\n</string>
+    <string name="incorrect_password">Invalid username or password!\n</string>
     <string name="s_email_address">Username</string>
     <string name="s_password">Password</string>
     <string name="yes">Yes\n</string>
     <string name="password_time">Password</string>
-    <string name="welcome_back">LinPhone Welcome</string>
+    <string name="welcome_back">Velox Network</string>
     <string name="click_to_login">welcome to login</string>
     <string name="sip_address">sip address</string>
     <string name="home">Home</string>
@@ -45,4 +45,8 @@
     <string name="default_sip">sip.linphone.org</string>
     <string name="invalid_credential">Invalid username or password</string>
     <string name="confirm">OK</string>
+    <string name="confirm_ye">YES</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="history">History</string>
+    <string name="inbox">Inbox\n</string>
 </resources>
