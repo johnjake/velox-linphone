@@ -36,7 +36,7 @@ For the CarTrack development the following IDE and patterns are used:
    
    User Interface:
    
-  ![alt text](https://github.com/johnjake/car-trackers/blob/screen-shot/car_track_screen.png)
+  ![alt text](https://github.com/johnjake/velox-linphone/blob/main/ui.png)
 
 
 
