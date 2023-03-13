@@ -27,23 +27,24 @@
         >
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/erase"
+            android:id="@+id/padErase"
             android:contentDescription="@string/content_description_dialer_erase"
             android:layout_width="@dimen/resources_100dp"
             android:layout_height="match_parent"
             android:paddingLeft="@dimen/resources_10dp"
             android:paddingRight="@dimen/resources_10dp"
+            android:clickable="true"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:focusableInTouchMode="true"
-            android:src="@drawable/ic_back_space" />
+            android:src="@drawable/ic_back_space_unc" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/sip_uri_input"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/erase"
+            android:layout_toStartOf="@id/padErase"
             android:background="@color/transparent_color"
             android:backgroundTint="@color/normal_text_color"
             android:ellipsize="start"
@@ -110,8 +111,8 @@
     </LinearLayout>
 
     <include
-        android:id="@+id/include"
-        layout="@layout/fragment_dial_pad"
+        android:id="@+id/included_pad"
+        layout="@layout/layout_dial_pad"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/resources_65dp"

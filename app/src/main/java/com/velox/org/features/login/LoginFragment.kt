@@ -8,19 +8,15 @@ import com.velox.org.features.main.MainActivity
 import com.velox.org.features.utils.gone
 import com.velox.org.features.utils.navigate
 import com.velox.org.features.utils.visible
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import org.linphone.core.Account
 import org.linphone.core.Core
 import org.linphone.core.CoreListenerStub
 import org.linphone.core.RegistrationState
 import org.linphone.core.TransportType
+import timber.log.Timber
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
-
-    private val mutableLoader: MutableSharedFlow<Boolean> = MutableSharedFlow()
-    private val counterState: SharedFlow<Boolean> = mutableLoader
 
     private val viewModel: LoginViewModel by viewModels()
     private val core: Core by lazy { viewModel.createCore(null, null) }
@@ -63,6 +59,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     is AuthState.HideLoader -> handleHide()
                     is AuthState.OnSuccess -> handleSuccess(state.account)
                     is AuthState.OnFailure -> handleFailed(state.error)
+                    else -> Timber.e(" error:")
                 }
             }
         }

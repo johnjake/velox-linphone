@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/numpad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:background="@color/white_alpha_50"
+        app:flexWrap="wrap"
+        app:justifyContent="space_around"
+        app:alignItems="center"
+        app:alignContent="space_around">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_one"
+            style="@style/numpad_digit"
+            android:src="@drawable/ic_number_one_unc"
+            android:clickable="true"
+            android:contentDescription="@string/description_numpad_1"
+            />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_two"
+            android:clickable="true"
+            style="@style/numpad_digit"
+            android:contentDescription="@string/description_numpad_2"
+            android:src="@drawable/ic_number_two_unc"
+            />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_three"
+            style="@style/numpad_digit"
+            android:clickable="true"
+            android:contentDescription="@string/description_numpad_3"
+            android:src="@drawable/ic_number_three_unc"
+            />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_four"
+            style="@style/numpad_digit"
+            android:clickable="true"
+            app:layout_wrapBefore="true"
+            android:src="@drawable/ic_number_four_unc"
+            android:contentDescription="@string/description_numpad_4"
+             />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_five"
+            style="@style/numpad_digit"
+            android:clickable="true"
+            android:src="@drawable/ic_number_five_unc"
+            android:contentDescription="@string/description_numpad_5"
+             />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_six"
+            style="@style/numpad_digit"
+            android:clickable="true"
+            android:src="@drawable/ic_number_six_unc"
+            android:contentDescription="@string/description_numpad_6"
+           />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_seven"
+            style="@style/numpad_digit"
+            app:layout_wrapBefore="true"
+            android:clickable="true"
+            android:src="@drawable/ic_number_seven_unc"
+            android:contentDescription="@string/description_numpad_7"
+             />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_eight"
+            style="@style/numpad_digit"
+            android:clickable="true"
+            android:src="@drawable/ic_number_eight_unc"
+            android:contentDescription="@string/description_numpad_8"
+            />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_nine"
+            style="@style/numpad_digit"
+            android:clickable="true"
+            android:src="@drawable/ic_number_nine_unc"
+            android:contentDescription="@string/description_numpad_9"
+            />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_star"
+            style="@style/numpad_digit"
+            app:layout_wrapBefore="true"
+            android:clickable="true"
+            android:src="@drawable/ic_star_digit_unc"
+            android:contentDescription="@string/description_numpad_star"
+            />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_zero"
+            style="@style/numpad_digit"
+            android:clickable="true"
+            android:src="@drawable/ic_number_zero_unc"
+            android:contentDescription="@string/description_numpad_0"
+         />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pad_sharp"
+            style="@style/numpad_digit"
+            android:clickable="true"
+            android:src="@drawable/ic_sharp_digit_unc"
+            android:contentDescription="@string/description_numpad_0"
+          />
+    </com.google.android.flexbox.FlexboxLayout>
+</layout>
